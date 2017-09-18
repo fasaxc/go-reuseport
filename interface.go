@@ -66,9 +66,9 @@ func ListenPacket(network, address string) (net.PacketConn, error) {
 // Returns a net.Conn created from a file discriptor for a socket
 // with SO_REUSEPORT and SO_REUSEADDR option set.
 func Dial(network, laddr, raddr string) (net.Conn, error) {
-	if !available() {
-		return nil, syscall.Errno(syscall.ENOPROTOOPT)
-	}
+	//if !available() {
+	//	return nil, syscall.Errno(syscall.ENOPROTOOPT)
+	//}
 
 	var d Dialer
 	if laddr != "" {
@@ -96,9 +96,9 @@ func (d *Dialer) Dial(network, address string) (net.Conn, error) {
 }
 
 func (d *Dialer) DialContext(ctx context.Context, network, address string) (net.Conn, error) {
-	if !available() {
-		return nil, syscall.Errno(syscall.ENOPROTOOPT)
-	}
+	//if !available() {
+	//	return nil, syscall.Errno(syscall.ENOPROTOOPT)
+	//}
 
 	return dial(ctx, d.D, network, address)
 }
